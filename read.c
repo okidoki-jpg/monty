@@ -35,7 +35,7 @@ void read_file(char *file, _stack_t **stack)
 			instruction_t = get_op(cmds[0]);
 			if (!instruction_t)
 			{
-				printf("L%d: unknown instruction %s\n", line, cmds[0]);
+				fprintf(stderr, "L%d: unknown instruction %s\n", line, cmds[0]);
 				exit (EXIT_FAILURE);
 			}
 			instruction_t(&(*stack), n);
@@ -46,34 +46,17 @@ void read_file(char *file, _stack_t **stack)
 			instruction_t = get_op(strip(&cmds[0]));
 			if (instruction_t == NULL)
 			{
-				printf("L%d: unknown instruction %s\n", line, cmds[0]);
+				fprintf(stderr, "L%d: unknown instruction %s\n", line, cmds[0]);
 				exit (EXIT_FAILURE);
 			}
 			instruction_t(&(*stack), line);
-			//_pall(stack, line);
-			//printf("--%p @ %s\n", instruction_t, cmds[0]);
 		}
-		/*else if (!strcmp(strip(&cmds[0]), "pall"))
-		  {
-		  pall(*stack);
-		  }
-		  else if (!strcmp(strip(&cmds[0]), "pint"))
-		  {
-		  pint(*stack);
-		  }
-		  else
-		  {
-		  printf("L%d: unknown instruction %s\n", line, cmds[0]);
-		  exit (EXIT_FAILURE);
-		  }
-
-		if (instruction_t == NULL)
-		{
-			printf("L%d: unknown instruction %s\n", line, cmds[0]);
-			exit (EXIT_FAILURE);
-		}*/
-		//printf("%s @ --%p\n", cmds[0], instruction_t);
-		//instruction_t(&(*stack), line);
+		else
+			if (instruction_t == NULL)
+			{
+				printf("L%d: unknown instruction %s\n", line, cmds[0]);
+				exit (EXIT_FAILURE);
+			}
 
 		line++;
 		cmds[0] = cmds[1] = NULL;
@@ -88,89 +71,7 @@ void read_file(char *file, _stack_t **stack)
 
 }
 
-void _push(_stack_t **stack, size_t n)
-{
-	_stack_t *new = malloc(sizeof(_stack_t));
-
-	if (new == NULL)
-		//return 1;
-		exit (0);
-
-	new->n = n;
-	new->prev = NULL;
-	new->next = *stack;
-
-	if (*stack)
-		(*stack)->prev = new;
-	*stack = new;
-	//return (0);
-}
-
-void (*push)(_stack_t **stack, size_t n) = _push;
-
-void _pall(_stack_t **stack, __attribute__((unused)) size_t n)
-{
-	_stack_t *tmp = *stack;
-
-	while (tmp->next)
-	{
-		printf("%d\n", tmp->n);
-		tmp = tmp->next;
-	}
-}
 void (*pall)(_stack_t **stack, __attribute__((unused)) size_t n) = _pall;
-
-char *strip(char **str)
-{
-	char *bc = malloc(sizeof(strlen(*str)));
-
-	bc = strtok(*str, "\n");
-	if (bc)
-		*str = bc;
-	return (*str);
-}
-
-void free_stack_t(_stack_t *head)
-{
-	_stack_t *node, *next_node;
-
-	if (head)
-	{
-		node = head;
-		next_node = head->next;
-		while (next_node)
-		{
-			free(node);
-			node = next_node;
-			next_node = next_node->next;
-		}
-		free(node);
-	}
-}
-
-void _pint(_stack_t **stack, __attribute__((unused)) size_t n)
-{
-	_stack_t *tmp = *stack;
-
-	if (tmp)
-		printf("%d\n", tmp->n);
-}
+void (*push)(_stack_t **stack, size_t n) = _push;
 void (*pint)(_stack_t **stack, __attribute__((unused)) size_t n) = _pint;
 
-void (*get_op(char *opcode))(_stack_t **, size_t line)
-{
-	instruction_t ops[] = {
-							{"push", push},
-							{"pall", pall},
-							{"pint", pint},
-							{NULL, NULL}};
-	int i = 0;
-
-	while (ops[i].opcode)
-	{
-		if (!strcmp(opcode, ops[i].opcode))
-			return (ops[i].f);
-		i++;
-	}
-	return (NULL);
-}
