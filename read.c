@@ -4,8 +4,8 @@ void read_file(char *file, _stack_t **stack)
 {
 	FILE *fp = fopen(file, "r");
 	char *cmd = NULL, *cmds[3], *token;
-	size_t len = 0, i = 0, line = 1, n;
-	ssize_t read;
+	size_t len = 0, i = 0, n;
+	ssize_t read, line = 1;
 	void (*instruction_t)(_stack_t **, size_t);
 
 	if (fp == NULL)
