@@ -10,6 +10,7 @@
 
 int main(int ac, __attribute__((unused)) char **av)
 {
+	FILE *fd;
 	_stack_t *stack = malloc(sizeof(_stack_t));
 
 	if (ac != 2)
@@ -17,7 +18,16 @@ int main(int ac, __attribute__((unused)) char **av)
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	read_file(av[1], &stack);
+
+	fd = fopen(av[1], "r");
+	if (!fd)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
+		exit(EXIT_FAILURE);
+	}
+	
+	read_file(fd, &stack);
+	fclose(fd);
 	free_stack_t(stack);
 	return (0);
 }

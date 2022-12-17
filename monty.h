@@ -39,7 +39,7 @@ typedef struct instruction_s
 	void (*f)(_stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void read_file(char *file, _stack_t **stack);
+void read_file(FILE *fd, _stack_t **stack);
 void push(_stack_t **stack, size_t n);
 void pall(_stack_t **stack, __attribute__((unused)) size_t n);
 void pint(_stack_t **stack, __attribute__((unused)) size_t n);
