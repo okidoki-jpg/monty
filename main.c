@@ -25,7 +25,7 @@ int main(int ac, __attribute__((unused)) char **av)
 		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
-	
+
 	read_file(fd, &stack);
 	fclose(fd);
 	free_stack_t(stack);
