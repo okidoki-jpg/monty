@@ -37,4 +37,5 @@ void add(_stack_t **stack, __attribute__((unused)) unsigned int n)
 void nop(_stack_t **stack, __attribute__((unused)) unsigned int n)
 {
 	(void)stack;
+	(void)n;
 }
