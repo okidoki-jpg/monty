@@ -10,7 +10,7 @@
 
 void add(_stack_t **stack, __attribute__((unused)) unsigned int n)
 {
-	_stack_t *tmp = malloc(sizeof(stack_t));
+	_stack_t *tmp = malloc(sizeof(_stack_t));
 
 	if (*stack && (*stack)->n && (*stack)->next->n)
 	{
