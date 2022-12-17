@@ -78,7 +78,10 @@ void pint(_stack_t **stack, __attribute__((unused)) unsigned int n)
 void pop(_stack_t **stack, __attribute__((unused)) unsigned int n)
 {
 	if (*stack && (*stack)->n)
+	{
 		*stack = (*stack)->next;
+		(*stack)->prev = NULL;
+	}
 	else
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", n);
