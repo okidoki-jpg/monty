@@ -77,7 +77,7 @@ void pint(_stack_t **stack, __attribute__((unused)) unsigned int n)
 
 void pop(_stack_t **stack, __attribute__((unused)) unsigned int n)
 {
-	if ((*stack)->n)
+	if (*stack && (*stack)->n)
 		*stack = (*stack)->next;
 	else
 	{
