@@ -11,7 +11,8 @@
 void read_file(FILE *fd, _stack_t **stack)
 {
 	char *cmd = NULL, **cmds;
-	unsigned int len = 0, read, line = 1, eofno = -1;
+	unsigned int read, line = 1, eofno = -1;
+	size_t len = 0;
 	void (*instruction_t)(_stack_t **, unsigned int);
 
 	while ((read = getline(&cmd, &len, fd)) != eofno)
