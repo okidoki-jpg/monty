@@ -36,7 +36,7 @@ void pall(_stack_t **stack, __attribute__((unused)) unsigned int n)
 {
 	_stack_t *tmp = *stack;
 
-	while (tmp->next)
+	while (tmp->n)
 	{
 		printf("%d\n", tmp->n);
 		tmp = tmp->next;
@@ -55,11 +55,11 @@ void pint(_stack_t **stack, __attribute__((unused)) unsigned int n)
 {
 	_stack_t *tmp = *stack;
 
-	if (tmp)
+	if (tmp->n)
 		printf("%d\n", tmp->n);
 	else
 	{
-		fprintf(stderr, "L%u: can't pint, stack empty", n);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", n);
 		exit(EXIT_FAILURE);
 	}
 }
