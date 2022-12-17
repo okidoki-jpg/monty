@@ -49,9 +49,14 @@ void swap(_stack_t **stack, __attribute__((unused)) unsigned int n);
 void add(_stack_t **stack, __attribute__((unused)) unsigned int n);
 void nop(_stack_t **stack, __attribute__((unused)) unsigned int n);
 void sub(_stack_t **stack, __attribute__((unused)) unsigned int n);
+void _div(_stack_t **stack, __attribute__((unused)) unsigned int n);
+void mul(_stack_t **stack, __attribute__((unused)) unsigned int n);
+void mod(_stack_t **stack, __attribute__((unused)) unsigned int n);
+void pchar(_stack_t **stack, __attribute__((unused)) unsigned int n);
 void free_stack_t(_stack_t *head);
 char *strip(char **str);
 void (*get_op(char *opcode))(_stack_t **, unsigned int);
 char **tokens(char *cmd);
+int isint(_stack_t *node);
 
 #endif

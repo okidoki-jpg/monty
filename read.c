@@ -18,10 +18,15 @@ void read_file(FILE *fd, _stack_t **stack)
 	while ((read = getline(&cmd, &len, fd)) != eofno)
 	{
 		cmds = tokens(cmd);
+		if (!strcmp(*cmds, "exit"))
+		{
+			free(cmds);
+			continue;
+		}
 		instruction_t = get_op(strip(&cmds[0]));
 		if (!strcmp(strip(&cmds[0]), "push"))
 		{
-			if (!atoi(cmds[1]) && (strcmp(cmds[1], "0") || !cmds[1]))
+			if (!atoi(cmds[1]) && (strcmp(strip(&cmds[1]), "0") || !cmds[1]))
 			{
 				fprintf(stderr, "L%u: usage: push integer\n", line);
 				exit(EXIT_FAILURE);
@@ -62,6 +67,12 @@ char **tokens(char *cmd)
 	{
 		cmds[i] = &*token;
 		i++;
+		if (*cmds[0] == '#')
+		{
+			cmds[0] = "exit";
+			break;
+		}
+
 		if (i == 2)
 			break;
 		token = strtok(NULL, " ");

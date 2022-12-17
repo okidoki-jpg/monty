@@ -43,6 +43,20 @@ char *strip(char **str)
 }
 
 /**
+ * isint - determine if val is num
+ * node: node from stack ds
+ *
+ * Return: 1 if is int, else 0
+ */
+
+int isint(_stack_t *node)
+{
+	if (node->n || node->n == 0)
+		return (1);
+	return (0);
+}
+
+/**
  * get_op - retrieve stack function
  * @opcode: function name
  *
@@ -60,6 +74,10 @@ void (*get_op(char *opcode))(_stack_t **, unsigned int line)
 		{"add", add},
 		{"nop", nop},
 		{"sub", sub},
+		{"div", _div},
+		{"mul", mul},
+		{"mod", mod},
+		{"pchar", pchar},
 		{NULL, NULL}};
 	int i = 0;
 

@@ -39,7 +39,7 @@ void pall(_stack_t **stack, __attribute__((unused)) unsigned int n)
 {
 	_stack_t *tmp = *stack;
 
-	while (tmp->n)
+	while (tmp->next)
 	{
 		printf("%d\n", tmp->n);
 		tmp = tmp->next;
@@ -58,7 +58,7 @@ void pint(_stack_t **stack, __attribute__((unused)) unsigned int n)
 {
 	_stack_t *tmp = *stack;
 
-	if (tmp->n)
+	if (tmp->next)
 		printf("%d\n", tmp->n);
 	else
 	{
@@ -77,7 +77,7 @@ void pint(_stack_t **stack, __attribute__((unused)) unsigned int n)
 
 void pop(_stack_t **stack, __attribute__((unused)) unsigned int n)
 {
-	if (*stack && (*stack)->n)
+	if (*stack && isint((*stack)))
 	{
 		*stack = (*stack)->next;
 		(*stack)->prev = NULL;
@@ -101,7 +101,7 @@ void swap(_stack_t **stack, __attribute__((unused)) unsigned int n)
 {
 	unsigned int tmp;
 
-	if (*stack && (*stack)->n && (*stack)->next->n)
+	if (*stack && isint((*stack)) && isint((*stack)->next))
 	{
 		tmp = (*stack)->n;
 		(*stack)->n = (*stack)->next->n;
