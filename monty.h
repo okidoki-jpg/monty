@@ -40,12 +40,12 @@ typedef struct instruction_s
 } instruction_t;
 
 void read_file(FILE *fd, _stack_t **stack);
-void push(_stack_t **stack, size_t n);
-void pall(_stack_t **stack, __attribute__((unused)) size_t n);
-void pint(_stack_t **stack, __attribute__((unused)) size_t n);
+void push(_stack_t **stack, unsigned int n);
+void pall(_stack_t **stack, __attribute__((unused)) unsigned int n);
+void pint(_stack_t **stack, __attribute__((unused)) unsigned int n);
 void free_stack_t(_stack_t *head);
 char *strip(char **str);
-void (*get_op(char *opcode))(_stack_t **, size_t);
+void (*get_op(char *opcode))(_stack_t **, unsigned int);
 char **tokens(char *cmd);
 
 #endif

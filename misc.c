@@ -49,7 +49,7 @@ char *strip(char **str)
  * Return: valid stack function, else NULL
  */
 
-void (*get_op(char *opcode))(_stack_t **, size_t line)
+void (*get_op(char *opcode))(_stack_t **, unsigned int line)
 {
 	instruction_t ops[] = {
 		{"push", push},
