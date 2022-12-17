@@ -17,22 +17,26 @@ void read_file(char *file, _stack_t **stack)
 	{
 		cmds = tokens(cmd);
 		instruction_t = get_op(strip(&cmds[0]));
-
-		if (!strcmp(strip(&cmds[0]), "push") && (atoi(cmds[1]) > 0 || !strcmp(cmds[1], "0")))
-			instruction_t(&(*stack), atoi(cmds[1]));
+		if (!strcmp(strip(&cmds[0]), "push"))
+		{
+			if (!atoi(cmds[1]) && strcmp(cmds[1], "0"))
+			{
+				fprintf(stderr, "L%u: usage: push integer\n", line);
+				exit(EXIT_FAILURE);
+			}
+			else if (!atoi(cmds[1]) || atoi(cmds[1]))
+				instruction_t(&(*stack), atoi(cmds[1]));
+		}
 		else if (cmds[0] && instruction_t)
 			instruction_t(&(*stack), line);
-
 		if (!instruction_t)
 		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", line, cmds[0]);
+			fprintf(stderr, "L%u: unknown instruction %s\n", line, cmds[0]);
 			exit(EXIT_FAILURE);
 		}
-
 		line++;
 		free(cmds);
 	}
-
 	fclose(fp);
 	if (cmd)
 		free(cmd);
