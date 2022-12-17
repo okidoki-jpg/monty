@@ -12,7 +12,7 @@ void read_file(char *file, _stack_t **stack)
 {
 	FILE *fp = fopen(file, "r");
 	char *cmd = NULL, **cmds;
-	size_t len = 0, read, line = 1;
+	size_t len = 0, read, line = 1, eofno = -1;
 	void (*instruction_t)(_stack_t **, size_t);
 
 	if (!fp)
@@ -21,7 +21,7 @@ void read_file(char *file, _stack_t **stack)
 		exit(EXIT_FAILURE);
 	}
 
-	while ((read = getline(&cmd, &len, fp)) != -1)
+	while ((read = getline(&cmd, &len, fp)) != eofno)
 	{
 		cmds = tokens(cmd);
 		instruction_t = get_op(strip(&cmds[0]));
