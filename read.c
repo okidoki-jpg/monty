@@ -31,7 +31,8 @@ void read_file(FILE *fd, _stack_t **stack)
 		}
 		else if (cmds[0] && instruction_t)
 			instruction_t(&(*stack), line);
-		if (!instruction_t)
+		if (!instruction_t && strcmp(cmds[0], "\n"))
+
 		{
 			fprintf(stderr, "L%u: unknown instruction %s\n", line, cmds[0]);
 			exit(EXIT_FAILURE);
