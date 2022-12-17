@@ -1,6 +1,14 @@
 #include "monty.h"
 
-void _push(_stack_t **stack, size_t n)
+/**
+ * push - push int to stack ds
+ * @stack: stack ds
+ * @n: value to push
+ *
+ * Return: void
+ */
+
+void push(_stack_t **stack, size_t n)
 {
 	_stack_t *new = malloc(sizeof(_stack_t));
 
@@ -16,7 +24,15 @@ void _push(_stack_t **stack, size_t n)
 	*stack = new;
 }
 
-void _pall(_stack_t **stack, __attribute__((unused)) size_t n)
+/**
+ * pall - print stack
+ * @stack: stack ds
+ * @n: potential line number
+ *
+ * Return: void
+ */
+
+void pall(_stack_t **stack, __attribute__((unused)) size_t n)
 {
 	_stack_t *tmp = *stack;
 
@@ -27,7 +43,15 @@ void _pall(_stack_t **stack, __attribute__((unused)) size_t n)
 	}
 }
 
-void _pint(_stack_t **stack, __attribute__((unused)) size_t n)
+/**
+ * pint - print top val in stack
+ * @stack: stack ds
+ * @n: potential line number
+ *
+ * Return: void
+ */
+
+void pint(_stack_t **stack, __attribute__((unused)) size_t n)
 {
 	_stack_t *tmp = *stack;
 

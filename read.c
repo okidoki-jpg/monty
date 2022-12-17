@@ -1,5 +1,13 @@
 #include "monty.h"
 
+/**
+ * read_file - read minty file, call instruction interpretor
+ * @file: filename
+ * @stack: stack data structure
+ *
+ * Return: void
+ */
+
 void read_file(char *file, _stack_t **stack)
 {
 	FILE *fp = fopen(file, "r");
@@ -42,6 +50,13 @@ void read_file(char *file, _stack_t **stack)
 		free(cmd);
 	exit(EXIT_SUCCESS);
 }
+
+/**
+ * tokens - split command into tokens
+ * @cmd: string to split
+ *
+ * Return: string array of tokens
+ */
 
 char **tokens(char *cmd)
 {
