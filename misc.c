@@ -1,5 +1,12 @@
 #include "monty.h"
 
+/**
+ * free_stack - free stack memory
+ * head: head of stack
+ *
+ * Return: void
+ */
+
 void free_stack_t(_stack_t *head)
 {
 	_stack_t *node, *next_node;
@@ -18,6 +25,13 @@ void free_stack_t(_stack_t *head)
 	}
 }
 
+/**
+ * strip - remove trailing new line character
+ * str: string to strip
+ *
+ * Return: stripped string
+ */
+
 char *strip(char **str)
 {
 	char *bc = malloc(sizeof(strlen(*str)));
@@ -28,12 +42,19 @@ char *strip(char **str)
 	return (*str);
 }
 
+/**
+ * get_op - retrieve stack function
+ * opcode: function name
+ *
+ * Return: valid stack function, else NULL
+ */
+
 void (*get_op(char *opcode))(_stack_t **, size_t line)
 {
 	instruction_t ops[] = {
-		{"push", push},
-		{"pall", pall},
-		{"pint", pint},
+		{"push", _push},
+		{"pall", _pall},
+		{"pint", _pint},
 		{NULL, NULL}};
 	int i = 0;
 

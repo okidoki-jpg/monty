@@ -1,6 +1,14 @@
 #include "monty.h"
 
-int main(int ac, char **av)
+/**
+ * main - Program entry point
+ * ac: arg count
+ * av: arg vector
+ *
+ * Return: 0 on success
+ */
+
+int main(int ac, __attribute__((unused)) char **av)
 {
 	_stack_t *stack = malloc(sizeof(_stack_t));
 
