@@ -67,6 +67,14 @@ void pint(_stack_t **stack, __attribute__((unused)) unsigned int n)
 	}
 }
 
+/**
+ * pop - remove top val in stack
+ * @stack: stack ds
+ * @n: potential line number
+ *
+ * Return: void
+ */
+
 void pop(_stack_t **stack, __attribute__((unused)) unsigned int n)
 {
 	if (tmp->n)
