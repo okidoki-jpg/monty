@@ -25,3 +25,16 @@ void add(_stack_t **stack, __attribute__((unused)) unsigned int n)
 		exit(EXIT_FAILURE);
 	}
 }
+
+/**
+ * nop - does nothing
+ * @stack: stack ds
+ * @n: potential line number
+ *
+ * Return: void
+ */
+
+void nop(_stack_t **stack, __attribute__((unused)) unsigned int n)
+{
+	(void)stack;
+}
