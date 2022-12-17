@@ -8,7 +8,7 @@
  * Return: void
  */
 
-void push(_stack_t **stack, size_t n)
+void push(_stack_t **stack, unsigned int n)
 {
 	_stack_t *new = malloc(sizeof(_stack_t));
 
@@ -32,7 +32,7 @@ void push(_stack_t **stack, size_t n)
  * Return: void
  */
 
-void pall(_stack_t **stack, __attribute__((unused)) size_t n)
+void pall(_stack_t **stack, __attribute__((unused)) unsigned int n)
 {
 	_stack_t *tmp = *stack;
 
@@ -51,7 +51,7 @@ void pall(_stack_t **stack, __attribute__((unused)) size_t n)
  * Return: void
  */
 
-void pint(_stack_t **stack, __attribute__((unused)) size_t n)
+void pint(_stack_t **stack, __attribute__((unused)) unsigned int n)
 {
 	_stack_t *tmp = *stack;
 
