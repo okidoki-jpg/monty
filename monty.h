@@ -45,6 +45,7 @@ void push(_stack_t **stack, unsigned int n);
 void pall(_stack_t **stack, __attribute__((unused)) unsigned int n);
 void pint(_stack_t **stack, __attribute__((unused)) unsigned int n);
 void pop(_stack_t **stack, __attribute__((unused)) unsigned int n);
+void swap(_stack_t **stack, __attribute__((unused)) unsigned int n);
 void free_stack_t(_stack_t *head);
 char *strip(char **str);
 void (*get_op(char *opcode))(_stack_t **, unsigned int);

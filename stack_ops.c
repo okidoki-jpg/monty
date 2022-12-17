@@ -85,3 +85,28 @@ void pop(_stack_t **stack, __attribute__((unused)) unsigned int n)
 		exit(EXIT_FAILURE);
 	}
 }
+
+/**
+ * swap - swap top 2 vals in stack
+ * @stack: stack ds
+ * @n: potential line number
+ *
+ * Return: void
+ */
+
+void swap(_stack_t **stack, __attribute__((unused)) unsigned int n)
+{
+	unsigned int tmp;
+
+	if (*stack && (*stack)->n && (*stack)->next->n)
+	{
+		tmp = (*stack)->n;
+		(*stack)->n = (*stack)->next->n;
+		(*stack)->next->n = tmp;
+	}
+	else
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short\n", n);
+		exit(EXIT_FAILURE);
+	}
+}
