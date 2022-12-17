@@ -13,7 +13,7 @@ void push(_stack_t **stack, size_t n)
 	_stack_t *new = malloc(sizeof(_stack_t));
 
 	if (new == NULL)
-		exit (0);
+		exit(0);
 
 	new->n = n;
 	new->prev = NULL;
