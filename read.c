@@ -21,7 +21,7 @@ void read_file(FILE *fd, _stack_t **stack)
 		instruction_t = get_op(strip(&cmds[0]));
 		if (!strcmp(strip(&cmds[0]), "push"))
 		{
-			if (!atoi(cmds[1]) && strcmp(cmds[1], "0"))
+			if (!atoi(cmds[1]) && strcmp(cmds[1], "0") || !cmds[1])
 			{
 				fprintf(stderr, "L%u: usage: push integer\n", line);
 				exit(EXIT_FAILURE);

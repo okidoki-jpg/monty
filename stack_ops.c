@@ -57,4 +57,9 @@ void pint(_stack_t **stack, __attribute__((unused)) unsigned int n)
 
 	if (tmp)
 		printf("%d\n", tmp->n);
+	else
+	{
+		fprintf(stderr, "L%u: can't pint, stack empty", n);
+		exit(EXIT_FAILURE);
+	}
 }
